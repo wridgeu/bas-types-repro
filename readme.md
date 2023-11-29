@@ -2,7 +2,7 @@
 
 ## Scenario
 
-We'd like to have a base class with some methods and from that x sub-classes. The base class (as it is their common denominator) defines a
+We'd like to have a base class with some methods and from that x sub-classes. The base class (as it is their common denominator) defines (& houses the definition) a
 "interface" using JSDoc's `@typedef`. The created string literal is then used inside the sub-classes `Interfaces` metadata declaration (marker/tag interface).
 This gives us nothing but the possibility for runtime comparisons like `getMetadata().isA("InterfaceStringHere")`.
 
