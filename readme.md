@@ -26,15 +26,14 @@ But again, maybe I need more than just a jsconfig like?
 > Upon creating this example I realized that the code-completion seems to be better when you're inside a controller, instead of a custom class/object. This
 might be part of the problem?
 
-## Comment
-
-Might not be the perfect usage of JSDoc or most appropriate but it worked quite well for code completion on pure JS projects so far. The `ConsumingClass` isn't used anywhere
-as it is just for demo purposes regarding code completion. The setup/starting of the app was also not considered at all in this demo.
-
 ### Installed Extensions in BAS
 
 The only one that matters is `iljapostnovs.ui5plugin` as it also gives some code-completion. Other than that only prettifier.
 
+### Comment
+
+Might not be the perfect usage of JSDoc or most appropriate but it worked quite well for code completion on pure JS projects so far. The `ConsumingClass` isn't used anywhere
+as it is just for demo purposes regarding code completion. The setup/starting of the app was also not considered at all in this demo.
 ## Credits
 
 This project has been generated with 💙 and [Easy-UI5](https://github.com/SAP/generator-easy-ui5)
