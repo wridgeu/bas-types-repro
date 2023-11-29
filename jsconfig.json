@@ -1,0 +1,16 @@
+{
+	"include": [
+		"webapp/**/*",
+		"node_modules/@sapui5/ts-types/types",
+	]
+}
+
+// unused but didn't work either
+// {
+// 	"typeAcquisition": {
+// 		"include": [
+// 			"node",
+// 			"node_modules/@sapui5/ts-types/types",
+// 		],
+// 	}
+// }
