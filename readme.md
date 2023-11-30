@@ -22,7 +22,7 @@ I had issues recreating it in my own VSC (non-company computer which has X exten
 took this project and put it into a recently created BAS Dev Space which is running Typescript@5.3.0-dev.20230808 for intellisense and there I could recreate it when
 comparing it to Typescript@4.8.0-dev.20220809.
 
-But again, maybe I need more than just a jsconfig like?
+But again, maybe I need more than just a jsconfig like:
 > Upon creating this example I realized that the code-completion seems to be better when you're inside a controller, instead of a custom class/object. This
 might be part of the problem?
 
