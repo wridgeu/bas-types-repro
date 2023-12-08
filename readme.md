@@ -1,6 +1,6 @@
 # jstype example
 
-Want to know how we resolved it? Jump to [How to resolve it?](#how-to-resolve-it?).
+Want to know how we resolved it? Jump to [How to resolve it?](#how-to-resolve-it).
 
 ## Scenario
 
