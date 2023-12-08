@@ -1,5 +1,7 @@
 # jstype example
 
+Want to know how we resolved it? Jump to [How to resolve it?](#how-to-resolve-it?).
+
 ## Scenario
 
 We'd like to have a base class with some methods and from that x sub-classes. The base class (as it is their common denominator) defines (& houses the definition) a
@@ -50,14 +52,38 @@ Same `jsconfig.json` in both variants:
 ```
 
 ### 5.3.0-dev.20230808 
+
 ![image](https://github.com/wridgeu/bas-types-repro/assets/14982812/ca84cc0b-e9b2-4e30-a298-a816efec36dd)
 
 With removal of the `typeof` keyword in the constructor functions `@param` declaration we do get _some_ code completion but none are from the "native" TSServer but rather from the aforementioned UI5 plugin (as can be identified by the providers hint). And it is rather crude as it seems to simply infer what `getInterface` would technically return, throwing away our own type merging declaration above it.
 ![image](https://github.com/wridgeu/bas-types-repro/assets/14982812/107f562a-43c8-492a-91b5-747402db2375)
 
 ### 4.8.0-dev.20220809
+
 Here we can see both the `sap.ui.base.Object` and `sap.ui.base.EventProvider` methods as code completion by the TSServer.
 ![image](https://github.com/wridgeu/bas-types-repro/assets/14982812/46c49e34-4b85-45bf-a403-a8a0304d9d41)
+
+## How to resolve it?
+
+After having a chat with [Peter](https://github.com/petermuessig), we decided to move to newer UI5 type declarations, so instead of using the legacy types [ts-types](https://www.npmjs.com/package/@sapui5/ts-types), we moved to the new [types](https://www.npmjs.com/package/@sapui5/types) (more info regarding UI5s types [here](https://sap.github.io/ui5-typescript/)). This can have a few drawbacks due to the mismatch of types and actual used UI5 version but I already discussed that with Peter and Andreas as well and it's something you have to take into consideration. In this case, the positives outweigh the negatives. 
+
+We can now make better use of the native JSDoc integration of TypeScript by using the TS [import types](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#import-types) syntax to pull in the default exports of UI5s `.d.ts` ((global) type declaration) files. This properly resolves the types in both, `4.X.X` and `5.X.X` TypeScript versions.
+
+A great help was the [demo repository](https://github.com/SAP-samples/ui5-cap-event-app/tree/js-with-typescript-support#applying-typescript-benefits-to-a-javascript-application) from [Andreas Kunz](https://github.com/akudev). Here we found not only some infos regarding Type support in JS applications but also confirmation that the way we make use of JSDocs `@typedef` directive makes sense.
+
+Also make sure to use `typeof` where appropriate!
+> In case of `sap.ui.require(...)` and `sap.ui.define(...)` calls, the parameters given to the callback function are not instances of Controller and other UI5 classes, but the parameters are the types/classes themselves! Hence an additional typeof operator needs to be added when specifying the types of the callback parameters.
+
+> [!note]
+> We do not use a `tsconfig` though, we're still making use of a `jsconfig` - in the end, same thing. 😉
+> ```json
+> {
+>	"compilerOptions": {
+>		"types": ["@sapui5/types", "@types/qunit", "@types/sinon"] // <<< resolve types by npm package name, instead of filepaths, thanks Peter!
+>	},
+>	"include": ["webapp/**/*"]
+> }
+> ```
 
 ## Credits
 
