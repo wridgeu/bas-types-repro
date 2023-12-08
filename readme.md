@@ -65,7 +65,7 @@ Here we can see both the `sap.ui.base.Object` and `sap.ui.base.EventProvider` me
 
 ## How to resolve it?
 
-After having a chat with [Peter](https://github.com/petermuessig), we decided to move to newer UI5 type declarations, so instead of using the legacy types [ts-types](https://www.npmjs.com/package/@sapui5/ts-types), we moved to the new [types](https://www.npmjs.com/package/@sapui5/types) (more info regarding UI5s types [here](https://sap.github.io/ui5-typescript/)). This can have a few drawbacks due to the mismatch of types and actual used UI5 version but I already discussed that with Peter and Andreas as well and it's something you have to take into consideration. In this case, the positives outweigh the negatives. 
+After having a chat with [Peter](https://github.com/petermuessig), we decided to move to newer UI5 type declarations, so instead of using the legacy UI5 types [ts-types](https://www.npmjs.com/package/@sapui5/ts-types), we moved to the new [types](https://www.npmjs.com/package/@sapui5/types) (more info regarding UI5s types [here](https://sap.github.io/ui5-typescript/)). This can have a few drawbacks due to the mismatch of types and actual used UI5 version but I already discussed that with Peter and Andreas as well and it's something you have to take into consideration. In this case, the positives outweigh the negatives. 
 
 We can now make better use of the native JSDoc integration of TypeScript by using the TS [import types](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#import-types) syntax to pull in the default exports of UI5s `.d.ts` ((global) type declaration) files. This properly resolves the types in both, `4.X.X` and `5.X.X` TypeScript versions.
 
